@@ -1,0 +1,23 @@
+input[type="text"].cell {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0px;
+  border-color: black;
+  margin: 0;
+  text-align: center;
+}
+
+.sudoku {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  border: 2px solid black;
+  display: inline-block;
+}
+
+.sudoku .row:nth-child(3n):not(:last-child) {
+  border-bottom: 1px solid black;
+}
+
+.sudoku .row .cell:nth-child(3n):not(:last-child) {
+  border-right: 2px solid black;
+}
