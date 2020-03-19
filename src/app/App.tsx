@@ -1,14 +1,13 @@
-import React from 'react';
+import React from 'react'
+import partial from 'lodash/partial'
 import { connect } from 'react-redux'
-import './App.css';
+import './App.css'
 import { updateCellValue } from './actions'
 import * as storeTypes from './storeTypes'
 
-const papply = (f: any, a: any) => (b: any) => f(a, b)
-
 interface SudokuProps {
   current: Array<number>,
-  onCellInputChange: Function
+  onCellInputChange: (arg0: number, arg1:number) => void
 }
 
 interface SudokuState {}
@@ -17,7 +16,7 @@ interface SudokuState {}
 class Sudoku extends React.Component<SudokuProps, SudokuState> {
 
   renderCell = (cellValue: number, cellIndex: number) => {
-    const onCellInputChange = papply(this.props.onCellInputChange, cellIndex)
+    const onCellInputChange = partial(this.props.onCellInputChange, cellIndex)
 
     return (
       <Cell value={cellValue} onCellInputChange={onCellInputChange} key={`cell-${cellIndex}`} />
@@ -25,7 +24,6 @@ class Sudoku extends React.Component<SudokuProps, SudokuState> {
   }
 
   renderCells(startIndex: number, endIndex: number) {
-    console.log(this.props)
     return this.props.current.slice(startIndex, endIndex).map((value, index) => this.renderCell(value, startIndex + index))
   }
 
@@ -65,8 +63,7 @@ const mapStateToProps = (state: storeTypes.SudokuState) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onCellInputChange: (cellIndex: number, cellValue: number) => {
-      console.log('cell input changed!')
+    onCellInputChange: (cellIndex: number, cellValue: number): void => {
       dispatch(updateCellValue(cellIndex, cellValue))
     }
   }
