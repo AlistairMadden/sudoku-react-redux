@@ -1,4 +1,5 @@
 import { UPDATE_CELL_VALUE } from './actions'
+import { SUBMIT_SUDOKU } from './components/submitButton/actions'
 import { SudokuState } from './storeTypes'
 
 const initialState: SudokuState = {
@@ -15,6 +16,9 @@ export default function updateCellValue(state = initialState, action: any) {
       current[action.cellIndex] = action.cellValue
       stateCopy.current = current
       return stateCopy
+    case SUBMIT_SUDOKU:
+      console.log(state.current)
+      return state
     default:
       return state
   }

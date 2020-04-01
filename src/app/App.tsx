@@ -1,9 +1,11 @@
 import React from 'react'
 import partial from 'lodash/partial'
 import { connect } from 'react-redux'
+
 import './App.css'
 import { updateCellValue } from './actions'
 import * as storeTypes from './storeTypes'
+import SubmitButton from './components/submitButton/submitButton'
 
 interface SudokuProps {
   current: Array<number>,
@@ -104,7 +106,16 @@ class Cell extends React.Component<CellProps> {
 }
 
 function App() {
-  return (<VisibleSudoku />);
+  return (
+    <div className="app">
+      <div className="sudoku-container">
+        <VisibleSudoku />
+      </div>
+      <div className="submit-button-container">
+        <SubmitButton />
+      </div>
+    </div>
+  );
 }
 
 export default App;

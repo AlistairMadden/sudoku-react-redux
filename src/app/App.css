@@ -7,11 +7,24 @@ input[type="text"].cell {
   text-align: center;
 }
 
-.sudoku {
-  margin-top: 2rem;
-  margin-left: 2rem;
-  border: 2px solid black;
+.app {
+  margin: 2rem;
   display: inline-block;
+}
+
+.sudoku-container {
+  float: left;
+}
+
+.submit-button-container {
+  float: left;
+  clear: both;
+  margin-top: 1rem;
+}
+
+.sudoku {
+  border: 2px solid black;
+  float: left;
 }
 
 .sudoku .row:nth-child(3n):not(:last-child) {
